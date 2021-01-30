@@ -43,9 +43,9 @@ class CommandBus:
 
     def execute(self, command: Command) -> None:
         try:
-            self.handle(command=command, handler=self._handlers[type(command)])
+            return self.handle(command=command, handler=self._handlers[type(command)])
         except KeyError:
             raise MissingCommandHandlerException()
 
     def handle(self, command: Command, handler: CommandHandler) -> None:
-        handler.handle(command)
+        return handler.handle(command)
